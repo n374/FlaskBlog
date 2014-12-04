@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+        {% if title %}
+            <title>{{ title }}</title>
+        {% else %}
+            <title>Blog</title>
+        {% endif %}
+        
+    </head>
+    <body>
+        <div>
+            Flask blog: <a href="/index">Home</a>
+        </div>
+        <hr />
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <li>{{ message}}</li>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
